@@ -1,9 +1,12 @@
 import { type NextRequest, NextResponse } from "next/server"
-import Stripe from "stripe"
 
 export async function POST(request: NextRequest) {
   try {
-    if (!process.env.STRIPE_SECRET_KEY) {
+    const Stripe = (await import("stripe")).default
+
+    const stripeKey = process.env.STRIPE_SECRET_KEY
+
+    if (!stripeKey) {
       console.error("[v0] STRIPE_SECRET_KEY is not configured")
       return NextResponse.json(
         { error: "Payment processing is not configured. Please contact support." },
@@ -11,7 +14,7 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
+    const stripe = new Stripe(stripeKey, {
       apiVersion: "2024-06-20",
     })
 
@@ -21,10 +24,8 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 })
     }
 
-    // Create payment intent with AED currency
-    // Amount should be in fils (AED's smallest unit - 1 AED = 100 fils)
     const paymentIntent = await stripe.paymentIntents.create({
-      amount: Math.round(amount), // Amount already converted to fils in frontend
+      amount: Math.round(amount),
       currency: "aed",
       payment_method_types: ["card"],
       metadata: {
@@ -47,7 +48,7 @@ export async function POST(request: NextRequest) {
         discount_code: discountCode || "",
         discount_amount: discountAmount?.toString() || "0",
         subtotal: subtotal?.toString() || "0",
-        total_amount_aed: (amount / 100).toString(), // Convert back to AED for metadata
+        total_amount_aed: (amount / 100).toString(),
       },
     })
 
