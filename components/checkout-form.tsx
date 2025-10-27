@@ -64,7 +64,6 @@ function CheckoutFormContent() {
   // Currency formatting functions
   const formatPrice = (amount: number) => `AED ${Math.round(amount).toLocaleString()}`
   const formatShipping = (aedAmount: number) => `AED ${Math.round(aedAmount).toLocaleString()}`
-
   const convertPrice = (aedPrice: number, currency: string) => {
     const rates = {
       GBP: 0.195,
@@ -73,7 +72,6 @@ function CheckoutFormContent() {
     }
     return Math.round(aedPrice * rates[currency as keyof typeof rates])
   }
-
   const formatCurrency = (price: number, currency: string) => {
     const symbols = {
       GBP: "£",
