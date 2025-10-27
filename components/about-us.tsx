@@ -6,7 +6,7 @@ const categories = ["Sports", "Events", "VIP Access", "Travel", "Music", "Partie
 
 export default function AboutUs() {
   return (
-    <section className="py-16 bg-white">
+    <section className="py-12 sm:py-16 bg-white">
       {/* Mobile Category Bar - positioned in white space above About section */}
       <div className="block sm:hidden px-4 mb-8">
         <div className="text-center">
@@ -24,36 +24,48 @@ export default function AboutUs() {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div>
-            {/* Header Section */}
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-900">About Global Fans Club</h2>
-            <div className="space-y-4 text-gray-600">
-              {/* Main Story */}
-              <p>
-                Welcome to Global Fans Club, your premier destination for authentic football memorabilia and exclusive
-                fan experiences. We bring together passionate supporters from around the world to celebrate the
-                beautiful game.
-              </p>
-              <p>
-                Our collection features signed shirts, match-worn jerseys, and rare collectibles from legendary players
-                and iconic moments in football history. Every item comes with a certificate of authenticity, ensuring
-                you receive genuine memorabilia.
-              </p>
-              <p>
-                Beyond memorabilia, we organize exclusive events, meet-and-greets with football legends, and unique
-                experiences that bring fans closer to the game they love. Join our global community and celebrate your
-                passion for football.
-              </p>
+        {/* Header Section */}
+        <div className="text-center mb-12 sm:mb-16">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4 sm:mb-6">
+            About Global Fans Club
+          </h2>
+          <div className="flex items-center justify-center mb-6 sm:mb-8">
+            <div className="w-12 h-12 sm:w-16 sm:h-16 bg-white border-2 border-gray-200 rounded-full flex items-center justify-center shadow-md">
+              <span className="text-red-500 text-2xl sm:text-3xl">★</span>
             </div>
           </div>
-          <div className="relative h-[400px] lg:h-[500px]">
-            <Image
-              src="/placeholder.svg?height=500&width=600&text=About+Us"
-              alt="Global Fans Club"
-              fill
-              className="object-cover rounded-lg shadow-xl"
-            />
+        </div>
+
+        {/* Main Story */}
+        <div className="mb-12 sm:mb-16">
+          <div className="bg-gray-50 p-6 sm:p-8 md:p-12 rounded-lg">
+            <div className="max-w-4xl mx-auto">
+              {/* Highlighted Quote Box */}
+              <div className="bg-gradient-to-r from-[#2d5a27] to-[#1f3e1a] text-white p-6 sm:p-8 rounded-lg shadow-lg mb-6 relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-24 h-24 sm:w-32 sm:h-32 bg-white bg-opacity-10 rounded-full -mr-12 sm:-mr-16 -mt-12 sm:-mt-16"></div>
+                <div className="absolute bottom-0 left-0 w-16 h-16 sm:w-24 sm:h-24 bg-white bg-opacity-5 rounded-full -ml-8 sm:-ml-12 -mb-8 sm:-mb-12"></div>
+                <div className="relative z-10">
+                  <div className="flex items-center mb-4">
+                    <div className="w-6 h-6 sm:w-8 sm:h-8 bg-white rounded-full flex items-center justify-center mr-3">
+                      <span className="text-red-500 text-sm sm:text-lg">★</span>
+                    </div>
+                    <span className="text-xs sm:text-sm font-medium text-gray-200 uppercase tracking-wider">
+                      Our Mission
+                    </span>
+                  </div>
+                  <p className="text-lg sm:text-xl leading-relaxed mb-4">
+                    Bringing you closer — we connect passion with experience through unforgettable events and exclusive
+                    access to the game's biggest icons. From stadium roars to quiet chats on the fairway, we offer
+                    something no ordinary fan club can.
+                  </p>
+                  <p className="text-lg sm:text-xl leading-relaxed">
+                    Global Fans Club (GFC) is more than just a destination — it's a community built by fans, for fans.
+                    Whether you're a lifelong supporter or a new admirer of the beautiful game, GFC brings you closer to
+                    the moments, the legends, and the memories that define memorable sporting achievements.
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 

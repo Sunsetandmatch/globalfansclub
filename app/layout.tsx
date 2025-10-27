@@ -5,14 +5,15 @@ import "./globals.css"
 import { CartProvider } from "@/lib/cart-context"
 import { PricingProvider } from "@/lib/pricing-context"
 import { Toaster } from "@/components/ui/toaster"
-import Header from "@/components/header"
-import Footer from "@/components/footer"
 
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Global Fans Club - Authentic Football Memorabilia",
-  description: "Shop authentic signed football shirts and memorabilia from legendary players and teams",
+  title: "Global Fans Club - Bringing You Closer",
+  description: "Official Global Fans Club merchandise store. Bringing fans closer to the heart of the game.",
+  icons: {
+    icon: "/favicon.ico",
+  },
     generator: 'v0.app'
 }
 
@@ -26,9 +27,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <PricingProvider>
           <CartProvider>
-            <Header />
-            <main>{children}</main>
-            <Footer />
+            {children}
             <Toaster />
           </CartProvider>
         </PricingProvider>

@@ -3,7 +3,7 @@
 import { useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
-import { Menu, X, ShoppingCart } from "lucide-react"
+import { Menu, X, ShoppingCart, Calendar, Mic, Home } from "lucide-react"
 import { useCart } from "@/lib/cart-context"
 
 export default function Header() {
@@ -31,7 +31,7 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-14 sm:h-16">
           {/* Logo */}
-          <Link href="/shop" className="flex items-center">
+          <Link href="/" className="flex items-center">
             <Image
               src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/90915215-AD23-400E-A679-7825CBDD4031.jpg-2OQSJPZ7rLWxjm35Y4erKFKUNUtRTO.jpeg"
               alt="Global Fans Club"
@@ -44,16 +44,43 @@ export default function Header() {
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex space-x-6 xl:space-x-8">
             <Link
-              href="/shop"
-              className="text-black hover:text-[#2d5a27] font-medium bg-transparent text-sm xl:text-base"
+              href="/"
+              className="text-black hover:text-[#2d5a27] font-medium flex items-center bg-transparent text-sm xl:text-base"
             >
-              Shop
+              <Home className="h-3 w-3 xl:h-4 xl:w-4 mr-1" />
+              Home
             </Link>
             <button
               onClick={() => scrollToSection("about")}
               className="text-black hover:text-[#2d5a27] font-medium bg-transparent text-sm xl:text-base"
             >
               About
+            </button>
+            <Link
+              href="/shop"
+              className="text-black hover:text-[#2d5a27] font-medium bg-transparent text-sm xl:text-base"
+            >
+              Shop
+            </Link>
+            <Link
+              href="/experiences"
+              className="text-black hover:text-[#2d5a27] font-medium flex items-center bg-transparent text-sm xl:text-base"
+            >
+              <Calendar className="h-3 w-3 xl:h-4 xl:w-4 mr-1" />
+              Events
+            </Link>
+            <button
+              onClick={() => scrollToSection("guest-speakers")}
+              className="text-black hover:text-[#2d5a27] font-medium flex items-center bg-transparent text-sm xl:text-base"
+            >
+              <Mic className="h-3 w-3 xl:h-4 xl:w-4 mr-1" />
+              Speakers
+            </button>
+            <button
+              onClick={() => scrollToSection("mailing-list")}
+              className="text-black hover:text-[#2d5a27] font-medium bg-transparent text-sm xl:text-base"
+            >
+              Newsletter
             </button>
             <button
               onClick={() => scrollToSection("contact")}
@@ -90,17 +117,46 @@ export default function Header() {
           <div className="lg:hidden py-4 border-t">
             <nav className="flex flex-col space-y-3">
               <Link
-                href="/shop"
-                className="text-black hover:text-[#2d5a27] font-medium text-left bg-transparent py-2"
+                href="/"
+                className="text-black hover:text-[#2d5a27] font-medium flex items-center bg-transparent py-2"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Shop
+                <Home className="h-4 w-4 mr-2" />
+                Home
               </Link>
               <button
                 onClick={() => scrollToSection("about")}
                 className="text-black hover:text-[#2d5a27] font-medium text-left bg-transparent py-2"
               >
                 About
+              </button>
+              <Link
+                href="/shop"
+                className="text-black hover:text-[#2d5a27] font-medium text-left bg-transparent py-2"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Shop
+              </Link>
+              <Link
+                href="/experiences"
+                className="text-black hover:text-[#2d5a27] font-medium flex items-center bg-transparent py-2"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                <Calendar className="h-4 w-4 mr-2" />
+                Events
+              </Link>
+              <button
+                onClick={() => scrollToSection("guest-speakers")}
+                className="text-black hover:text-[#2d5a27] font-medium flex items-center bg-transparent py-2"
+              >
+                <Mic className="h-4 w-4 mr-2" />
+                Guest Speakers
+              </button>
+              <button
+                onClick={() => scrollToSection("mailing-list")}
+                className="text-black hover:text-[#2d5a27] font-medium text-left bg-transparent py-2"
+              >
+                Newsletter
               </button>
               <button
                 onClick={() => scrollToSection("contact")}

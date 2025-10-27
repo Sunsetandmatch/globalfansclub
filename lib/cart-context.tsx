@@ -28,15 +28,18 @@ type CartAction =
   | { type: "LOAD_CART"; payload: CartState }
 
 export const DISCOUNT_CODES: Record<string, number> = {
-  ISTANBUL20: 20,
-  GERRARD15: 15,
-  LIVERPOOL10: 10,
-  WELCOME5: 5,
-  JOHNCONNORS: 25,
-  LINGLING: 30,
-  LFCGIRLFRIENDS: 30,
-  REDMENTV: 30,
-  MANNY30: 30,
+  // Legacy/private codes
+  ISTANBUL20: 20, // 20% off - Main coupon code
+  GERRARD15: 15, // 15% off
+  LIVERPOOL10: 10, // 10% off
+  WELCOME5: 5, // 5% off
+  JOHNCONNORS: 25, // 25% off - Private discount code
+  LINGLING: 30, // 30% off - Private discount code for Cantonese customers
+  LFCGIRLFRIENDS: 30, // 30% off - Private discount code
+  REDMENTV: 30, // 30% off - Private discount code
+  MANNY30: 30, // 30% off - Private discount code
+
+  // GFC tiered codes (every 5% up to 100%)
   GFC5: 5,
   GFC10: 10,
   GFC15: 15,
@@ -152,6 +155,7 @@ const CartContext = createContext<CartContextType | undefined>(undefined)
 export function CartProvider({ children }: { children: React.ReactNode }) {
   const [state, dispatch] = useReducer(cartReducer, initialState)
 
+  // Load cart from localStorage on mount
   useEffect(() => {
     const savedCart = localStorage.getItem("cart")
     if (savedCart) {
@@ -164,6 +168,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     }
   }, [])
 
+  // Save cart to localStorage whenever it changes
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(state))
   }, [state])
